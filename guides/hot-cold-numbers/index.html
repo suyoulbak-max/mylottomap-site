@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/assets/shared/brand-symbol.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/shared/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/shared/apple-touch-icon.png">
+  <title>자주 나온 번호와 오래 안 나온 번호 읽는 법 - 마이로또맵 가이드</title>
+  <meta name="description" content="번호 통계의 출현 횟수와 미출현 기간이 무엇을 뜻하는지, 분석 회차 수에 따라 기대되는 출현 횟수와 우연한 차이를 계산하는 법, 다음 회차 예측에 쓸 수 없는 이유를 설명합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="마이로또맵">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="자주 나온 번호와 오래 안 나온 번호 읽는 법 - 마이로또맵 가이드">
+  <meta property="og:description" content="번호 통계의 출현 횟수와 미출현 기간이 무엇을 뜻하는지, 분석 회차 수에 따라 기대되는 출현 횟수와 우연한 차이를 계산하는 법, 다음 회차 예측에 쓸 수 없는 이유를 설명합니다.">
+  <meta property="og:url" content="https://mylottomap.com/guides/hot-cold-numbers/">
+  <meta property="og:image" content="https://mylottomap.com/assets/shared/og-image-20261013.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1730">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="마이로또맵 - 전국 로또 1·2등 배출 판매점 지도">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mylottomap.com/guides/hot-cold-numbers/">
+  <meta name="google-adsense-account" content="ca-pub-2341876558710612">
+  <meta name="naver-site-verification" content="ba5b82f9d0650f99c5aefe9331b95e97f63ca825">
+  <link rel="preload" href="/assets/shared/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/shared/styles.css">
+</head>
+<body class="page-guides-hot-cold-numbers">
+  
+  <a href="#main-content" class="skip-to-content">본문으로 건너뛰기</a>
+  
+    <header class="site-header">
+      <div class="header-brand brand-page"><a href="/" class="brand-link" aria-label="마이로또맵 홈"><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></a><strong class="header-page-title">자주 나온 번호와 오래 안 나온 번호 읽는 법</strong></div>
+      
+      <nav class="nav-container" aria-label="주요 메뉴">
+        <div class="nav-pill-group">
+          <div class="nav-main-links">
+            <a href="/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/></svg></span>
+        <span class="nav-label-full">명당맵</span>
+        <span class="nav-label-short">명당맵</span>
+      </a>
+<a href="/results/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3h8v7a4 4 0 0 1-8 0Zm0 2H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 2v5m-4 2h8m-9 0h10"/></svg></span>
+        <span class="nav-label-full">당첨 결과</span>
+        <span class="nav-label-short">결과</span>
+      </a>
+<a href="/stats/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg></span>
+        <span class="nav-label-full">번호 통계</span>
+        <span class="nav-label-short">통계</span>
+      </a>
+<a href="/generator/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 3v4m-2-2h4"/></svg></span>
+        <span class="nav-label-full">번호 생성</span>
+        <span class="nav-label-short">생성</span>
+      </a>
+<a href="/my-numbers/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z"/><path d="M9 8h6m-6 4h4"/></svg></span>
+        <span class="nav-label-full">내 번호</span>
+        <span class="nav-label-short">내 번호</span>
+      </a>
+          </div>
+          <div class="nav-settings-wrap">
+            <a href="/settings/" class="nav-settings" title="환경 설정" aria-label="환경 설정">
+      <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3-.5 2-2 1L5 5l-2 4 2 1v4l-2 1 2 4 2.5-1 2 1 .5 2h4l.5-2 2-1 2.5 1 2-4-2-1v-4l2-1-2-4-2.5 1-2-1-.5-2Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="nav-settings-label">설정</span>
+    </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+  
+  <main id="main-content" class="main-content">
+    
+    <article class="content-page themed-page guide-detail-page">
+      <nav class="guide-detail-nav" aria-label="가이드 탐색"><a href="/guides/" class="content-link">&larr; 가이드 목록</a></nav>
+      <header class="page-intro themed-intro guide-detail-intro">
+        <span class="page-intro-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z"/><path d="M9 8h6m-6 4h4"/></svg></span>
+        <div class="guide-detail-heading">
+          <h1>자주 나온 번호와 오래 안 나온 번호 읽는 법</h1>
+          <p class="guide-detail-meta"><span><strong>작성일</strong> 2026-10-08</span><span><strong>수정일</strong> 2026-10-09</span></p>
+        </div>
+      </header>
+      <div class="card guide-detail-content">
+        <p class="mb-4 leading-relaxed">마이로또맵 <a href="/stats/" class="content-link">번호 통계</a>는 검증된 당첨 결과에서 번호별 <strong>출현 횟수</strong>와 <strong>미출현 기간</strong>을 계산해 보여 줍니다. 이 글은 두 값을 읽는 방법과 해석할 때 주의할 점을 설명합니다. 실제 수치는 회차가 쌓이면서 바뀌므로 항상 통계 페이지에서 최신 값을 확인하세요.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">통계 페이지의 두 값</h2>
+<div class="table-wrap mb-4"><table class="data-table"><thead><tr><th scope="col">항목</th><th scope="col">뜻</th></tr></thead><tbody><tr><td>출현 횟수</td><td>분석 기간 동안 그 번호가 본번호 6개 안에 나온 회차 수. 보너스 번호는 세지 않습니다.</td></tr><tr><td>미출현 기간</td><td>분석 기간의 마지막 회차를 기준으로, 그 번호가 마지막으로 나온 뒤 연속으로 나오지 않은 회차 수. 0이면 마지막 회차에 나왔다는 뜻입니다. 기간 안에 한 번도 나오지 않았으면 &quot;기간 내 미출현&quot;으로 표시합니다.</td></tr></tbody></table></div>
+<p class="mb-4 leading-relaxed">통계는 전체, 최근 100회, 최근 50회, 최근 10회 기간으로 나누어 보여 주며, 각 열 제목에 실제로 분석한 회차 수를 함께 적습니다. 확보된 회차가 100회보다 적으면 &quot;최근 100회&quot; 열도 확보된 회차만으로 계산됩니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">기대되는 출현 횟수</h2>
+<p class="mb-4 leading-relaxed">한 회차에서 특정 번호가 본번호에 포함될 확률은 6 / 45, 약 13.3%입니다. 그래서 N회를 분석하면 번호 하나당 평균적으로 <strong>N × 6 / 45</strong>번 나올 것으로 기대합니다.</p>
+<ul class="list-disc list-inside space-y-1 mb-4"><li>100회 분석: 번호당 평균 약 13.3회</li><li>50회 분석: 번호당 평균 약 6.7회</li><li>10회 분석: 번호당 평균 약 1.3회</li></ul>
+<p class="mb-4 leading-relaxed">분석 회차가 적을수록 번호별 출현 횟수는 이 평균에서 크게 벗어나기 쉽습니다. 10회만 보면 한 번도 나오지 않은 번호와 세 번 나온 번호가 함께 있는 것이 자연스러운 우연의 범위입니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">오래 안 나온 번호가 흔한 이유</h2>
+<p class="mb-4 leading-relaxed">어떤 번호가 한 회차에 나오지 않을 확률은 39 / 45입니다. 연속으로 k회 나오지 않을 확률은 (39 / 45)의 k제곱으로 계산합니다.</p>
+<div class="table-wrap mb-4"><table class="data-table"><thead><tr><th scope="col">연속 미출현</th><th scope="col">확률</th></tr></thead><tbody><tr><td>5회</td><td>약 48.9%</td></tr><tr><td>10회</td><td>약 23.9%</td></tr><tr><td>20회</td><td>약 5.7%</td></tr><tr><td>30회</td><td>약 1.4%</td></tr></tbody></table></div>
+<p class="mb-4 leading-relaxed">번호가 45개나 되므로, 어느 시점이든 10회 이상 나오지 않은 번호가 여러 개 있는 것은 이상한 일이 아닙니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">다음 회차 예측에 쓸 수 없는 이유</h2>
+<p class="mb-4 leading-relaxed">로또 추첨은 매 회차 새로 진행되며 이전 결과의 영향을 받지 않습니다. 자주 나온 번호가 계속 나온다는 생각도, 오래 안 나온 번호가 곧 나온다는 생각도 근거가 없습니다. 다음 회차에서 각 번호가 나올 확률은 과거 기록과 관계없이 똑같이 6 / 45입니다.</p>
+<p class="mb-4 leading-relaxed">출현 횟수와 미출현 기간은 지난 기록을 정리한 참고 정보로 읽어 주세요. 번호를 고르는 재미로 활용할 수는 있지만 당첨 가능성을 바꾸지 않습니다. 각 조합의 정확한 당첨 확률은 <a href="/guides/lotto-odds/" class="content-link">로또 당첨 확률과 번호 조합의 관계</a>에서, 데이터 출처와 집계 기준은 <a href="/data-methodology/" class="content-link">데이터·통계 설명</a>에서 확인할 수 있습니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">기간이 다를 때 비교하는 계산 예</h2>
+<p class="mb-4 leading-relaxed">다음은 실제 회차 수치가 아닌 <strong>설명용 가정</strong>입니다. 어떤 번호가 10회 중 3회, 50회 중 8회 나왔다면 단순 건수 3과 8만 비교하지 말고 분석 회차 수로 나눕니다.</p>
+<div class="table-wrap mb-4"><table class="data-table"><thead><tr><th scope="col">기간</th><th scope="col">출현 횟수</th><th scope="col">관측 비율</th><th scope="col">기대 횟수</th></tr></thead><tbody><tr><td>10회</td><td>3회</td><td>3 ÷ 10 = 30%</td><td>10 × 6 ÷ 45 ≈ 1.33회</td></tr><tr><td>50회</td><td>8회</td><td>8 ÷ 50 = 16%</td><td>50 × 6 ÷ 45 ≈ 6.67회</td></tr></tbody></table></div>
+<p class="mb-4 leading-relaxed">이는 각 기간의 기록을 비교하는 방법이지 30% 또는 16%가 다음 회차의 출현 확률이라는 뜻은 아닙니다. 최근 10회는 최근 50회의 일부라서 두 표본이 독립적이지도 않습니다.</p>
+<p class="mb-4 leading-relaxed">확보된 전체 기간은 로또의 모든 과거 회차를 뜻하지 않습니다. 조회한 회차 수와 시작·끝 회차를 먼저 확인하세요. 기간 내 미출현 역시 전체 역사에서 한 번도 나오지 않았다는 뜻이 아닙니다.</p>
+      </div>
+    </article>
+  
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></strong> <span class="footer-brand-en">(My Lotto Map)</span>
+        </div>
+        <p class="footer-desc">전국 로또 명당, 당첨 결과와 내 번호를 한곳에서</p>
+        <nav class="footer-links" aria-label="서비스 안내">
+          <a href="/about/">서비스 소개</a>
+          <a href="/data-methodology/">데이터·통계 설명</a>
+          <a href="/guides/">가이드</a>
+          <a href="/privacy/">개인정보처리방침</a>
+          <a href="/terms/">이용약관</a>
+          <a href="/contact/">문의</a>
+        </nav>
+        <p class="footer-notice">본 서비스는 동행복권 공식 데이터를 기반으로 제공하며, 특정 번호의 당첨을 보장하지 않습니다.</p>
+        <p class="footer-copy">&copy; 2026 마이로또맵. 모든 권리 보유.</p>
+      </div>
+    </footer>
+  
+  
+</body>
+</html>

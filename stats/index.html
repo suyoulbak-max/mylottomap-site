@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/assets/shared/brand-symbol.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/shared/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/shared/apple-touch-icon.png">
+  <title>로또 번호 통계 - 마이로또맵</title>
+  <meta name="description" content="로또 6/45 번호별 출현 빈도, 미출현 기간, 홀짝 및 합계 통계 분석표입니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="마이로또맵">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="로또 번호 통계 - 마이로또맵">
+  <meta property="og:description" content="로또 6/45 번호별 출현 빈도, 미출현 기간, 홀짝 및 합계 통계 분석표입니다.">
+  <meta property="og:url" content="https://mylottomap.com/stats/">
+  <meta property="og:image" content="https://mylottomap.com/assets/shared/og-image-20261013.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1730">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="마이로또맵 - 전국 로또 1·2등 배출 판매점 지도">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mylottomap.com/stats/">
+  <meta name="google-adsense-account" content="ca-pub-2341876558710612">
+  <meta name="naver-site-verification" content="ba5b82f9d0650f99c5aefe9331b95e97f63ca825">
+  <link rel="preload" href="/assets/shared/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/shared/styles.css">
+</head>
+<body class="page-stats">
+  
+  <a href="#main-content" class="skip-to-content">본문으로 건너뛰기</a>
+  
+    <header class="site-header">
+      <div class="header-brand brand-page"><a href="/" class="brand-link" aria-label="마이로또맵 홈"><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></a><strong class="header-page-title">로또 번호 통계</strong></div>
+      
+      <nav class="nav-container" aria-label="주요 메뉴">
+        <div class="nav-pill-group">
+          <div class="nav-main-links">
+            <a href="/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/></svg></span>
+        <span class="nav-label-full">명당맵</span>
+        <span class="nav-label-short">명당맵</span>
+      </a>
+<a href="/results/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3h8v7a4 4 0 0 1-8 0Zm0 2H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 2v5m-4 2h8m-9 0h10"/></svg></span>
+        <span class="nav-label-full">당첨 결과</span>
+        <span class="nav-label-short">결과</span>
+      </a>
+<a href="/stats/" class="nav-link nav-link-active" aria-current="page">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg></span>
+        <span class="nav-label-full">번호 통계</span>
+        <span class="nav-label-short">통계</span>
+      </a>
+<a href="/generator/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 3v4m-2-2h4"/></svg></span>
+        <span class="nav-label-full">번호 생성</span>
+        <span class="nav-label-short">생성</span>
+      </a>
+<a href="/my-numbers/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z"/><path d="M9 8h6m-6 4h4"/></svg></span>
+        <span class="nav-label-full">내 번호</span>
+        <span class="nav-label-short">내 번호</span>
+      </a>
+          </div>
+          <div class="nav-settings-wrap">
+            <a href="/settings/" class="nav-settings" title="환경 설정" aria-label="환경 설정">
+      <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3-.5 2-2 1L5 5l-2 4 2 1v4l-2 1 2 4 2.5-1 2 1 .5 2h4l.5-2 2-1 2.5 1 2-4-2-1v-4l2-1-2-4-2.5 1-2-1-.5-2Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="nav-settings-label">설정</span>
+    </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+  
+  <main id="main-content" class="main-content">
+    
+    <div class="stats-page-container content-page themed-page">
+      <div class="page-intro themed-intro">
+        <span class="page-intro-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg></span>
+        <div>
+        <h1 class="text-3xl font-black mb-2">로또 6/45 번호 통계</h1>
+        <p class="text-slate-500">역대 당첨 번호 출현 빈도, 미출현 기간, 홀짝 및 합계 통계 분석표입니다.</p>
+        </div>
+      </div>
+
+      <section class="data-status data-status-compact" aria-label="데이터 업데이트 상태">
+      <div class="status-summary">
+        <strong class="status-label">상태: 정상</strong>
+        <span>출처: 동행복권 공식 결과 화면</span>
+        <span>확인: 2026-10-25 01:34 (한국 시간)</span>
+      </div>
+      <details class="status-details">
+        <summary>업데이트 상세</summary>
+        <div class="status-times">
+          
+          <p>마지막 확인 시각 (한국 시간): 2026-10-25 01:34</p>
+          <p>데이터 갱신 시각 (한국 시간): 2026-10-25 01:34</p>
+          <p>마지막 업데이트 시도 (한국 시간): 2026-10-25 01:34</p>
+          <p>마지막 정상 업데이트 (한국 시간): 2026-10-25 01:34</p>
+        </div>
+      </details>
+    </section>
+      
+      <section class="card stats-overview">
+        <div class="card-heading">
+          <div>
+            <h2 class="section-title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/></svg> 통계 기준</h2>
+            <p class="text-sm text-blue-700 mt-1">기준 범위: <strong>83회 ~ 1247회 (총 1165회차 분석)</strong></p>
+          </div>
+          <div class="stats-sample">
+            <span class="metric-label">분석한 회차</span><strong>1165<small>회</small></strong>
+          </div>
+        </div>
+        <p class="section-desc">본번호 6개 기준 · 보너스 제외 · 확보된 기록 안에서 집계</p>
+      </section>
+
+      <section class="card mb-8">
+        <div class="section-header">
+          <h2 class="section-title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg> 번호별 출현 기록</h2>
+          <p class="section-desc">기간별 출현 횟수와 마지막으로 나온 뒤 지나간 회차 수입니다.</p>
+          <p class="section-desc">실제 집계: 전체 1165회 · 최근 100회 중 100회 · 최근 50회 중 50회 · 최근 10회 중 10회</p>
+        </div>
+
+        <figure class="freq-chart">
+          <svg viewBox="0 0 450 160" preserveAspectRatio="none" role="img" aria-label="번호 1~45의 전체 1165회 출현 횟수 막대 그래프. 기대 출현 횟수 155.3회, 우연 변동 범위 약 132.1~178.5회. 정확한 수치는 아래 표에 있습니다.">
+            <rect class="freq-band" x="0" y="3.90" width="450" height="40.58"></rect>
+            <rect class="ball-yellow" x="1.00" y="17.49" width="8.00" height="142.51"></rect><rect class="ball-yellow" x="11.00" y="35.85" width="8.00" height="124.15"></rect><rect class="ball-yellow" x="21.00" y="21.86" width="8.00" height="138.14"></rect><rect class="ball-yellow" x="31.00" y="26.23" width="8.00" height="133.77"></rect><rect class="ball-yellow" x="41.00" y="33.22" width="8.00" height="126.78"></rect><rect class="ball-yellow" x="51.00" y="24.48" width="8.00" height="135.52"></rect><rect class="ball-yellow" x="61.00" y="23.61" width="8.00" height="136.39"></rect><rect class="ball-yellow" x="71.00" y="29.73" width="8.00" height="130.27"></rect><rect class="ball-yellow" x="81.00" y="47.21" width="8.00" height="112.79"></rect><rect class="ball-yellow" x="91.00" y="27.98" width="8.00" height="132.02"></rect><rect class="ball-blue" x="101.00" y="19.23" width="8.00" height="140.77"></rect><rect class="ball-blue" x="111.00" y="9.62" width="8.00" height="150.38"></rect><rect class="ball-blue" x="121.00" y="7.87" width="8.00" height="152.13"></rect><rect class="ball-blue" x="131.00" y="18.36" width="8.00" height="141.64"></rect><rect class="ball-blue" x="141.00" y="22.73" width="8.00" height="137.27"></rect><rect class="ball-blue" x="151.00" y="20.98" width="8.00" height="139.02"></rect><rect class="ball-blue" x="161.00" y="22.73" width="8.00" height="137.27"></rect><rect class="ball-blue" x="171.00" y="14.86" width="8.00" height="145.14"></rect><rect class="ball-blue" x="181.00" y="19.23" width="8.00" height="140.77"></rect><rect class="ball-blue" x="191.00" y="17.49" width="8.00" height="142.51"></rect><rect class="ball-red" x="201.00" y="21.86" width="8.00" height="138.14"></rect><rect class="ball-red" x="211.00" y="35.85" width="8.00" height="124.15"></rect><rect class="ball-red" x="221.00" y="37.60" width="8.00" height="122.40"></rect><rect class="ball-red" x="231.00" y="18.36" width="8.00" height="141.64"></rect><rect class="ball-red" x="241.00" y="41.09" width="8.00" height="118.91"></rect><rect class="ball-red" x="251.00" y="27.98" width="8.00" height="132.02"></rect><rect class="ball-red" x="261.00" y="10.49" width="8.00" height="149.51"></rect><rect class="ball-red" x="271.00" y="24.48" width="8.00" height="135.52"></rect><rect class="ball-red" x="281.00" y="32.35" width="8.00" height="127.65"></rect><rect class="ball-red" x="291.00" y="32.35" width="8.00" height="127.65"></rect><rect class="ball-purple" x="301.00" y="19.23" width="8.00" height="140.77"></rect><rect class="ball-purple" x="311.00" y="41.09" width="8.00" height="118.91"></rect><rect class="ball-purple" x="321.00" y="19.23" width="8.00" height="140.77"></rect><rect class="ball-purple" x="331.00" y="0.00" width="8.00" height="160.00"></rect><rect class="ball-purple" x="341.00" y="27.98" width="8.00" height="132.02"></rect><rect class="ball-purple" x="351.00" y="26.23" width="8.00" height="133.77"></rect><rect class="ball-purple" x="361.00" y="22.73" width="8.00" height="137.27"></rect><rect class="ball-purple" x="371.00" y="17.49" width="8.00" height="142.51"></rect><rect class="ball-purple" x="381.00" y="24.48" width="8.00" height="135.52"></rect><rect class="ball-purple" x="391.00" y="24.48" width="8.00" height="135.52"></rect><rect class="ball-green" x="401.00" y="33.22" width="8.00" height="126.78"></rect><rect class="ball-green" x="411.00" y="28.85" width="8.00" height="131.15"></rect><rect class="ball-green" x="421.00" y="25.36" width="8.00" height="134.64"></rect><rect class="ball-green" x="431.00" y="25.36" width="8.00" height="134.64"></rect><rect class="ball-green" x="441.00" y="9.62" width="8.00" height="150.38"></rect>
+            <line class="freq-mean" x1="0" x2="450" y1="24.19" y2="24.19" vector-effect="non-scaling-stroke"></line>
+          </svg>
+          <div class="freq-axis" aria-hidden="true"><span style="left:1.11%">1</span><span style="left:21.11%">10</span><span style="left:43.33%">20</span><span style="left:65.56%">30</span><span style="left:87.78%">40</span><span style="left:98.89%">45</span></div>
+          <figcaption class="freq-legend">
+            <span><i class="legend-mean" aria-hidden="true"></i>기대 출현 횟수 155.3회 (1165회 × 6/45)</span>
+            <span><i class="legend-band" aria-hidden="true"></i>우연 변동 범위 약 132.1~178.5회 (평균 ± 2 표준편차)</span>
+            <span>그래프 세로 최대 183회</span>
+          </figcaption>
+        </figure>
+
+        <div class="table-wrap">
+          <table class="data-table frequency-table" role="table">
+            <caption class="sr-only">1~45 번호별 기간별 출현 횟수와 연속 미출현 기간</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">번호</th>
+                <th scope="col" class="text-right">전체<span class="table-subtitle">1165회 집계</span></th>
+                <th scope="col" class="text-right">최근 100회<span class="table-subtitle">100회 집계</span></th>
+                <th scope="col" class="text-right">최근 50회<span class="table-subtitle">50회 집계</span></th>
+                <th scope="col" class="text-right">최근 10회<span class="table-subtitle">10회 집계</span></th>
+                <th scope="col" class="text-center">미출현 기간</th>
+              </tr>
+            </thead>
+            <tbody role="rowgroup">
+              <tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 1">1</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>163회</strong><meter min="0" max="1165" value="163" aria-label="1번 전체 1165회 중 163회 출현">163 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>13회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>8회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>3회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 2">2</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>142회</strong><meter min="0" max="1165" value="142" aria-label="2번 전체 1165회 중 142회 출현">142 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>11회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>7회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>2회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>5회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 3">3</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>158회</strong><meter min="0" max="1165" value="158" aria-label="3번 전체 1165회 중 158회 출현">158 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>16회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>17회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 4">4</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>153회</strong><meter min="0" max="1165" value="153" aria-label="4번 전체 1165회 중 153회 출현">153 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>12회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>7회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>2회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>2회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 5">5</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>145회</strong><meter min="0" max="1165" value="145" aria-label="5번 전체 1165회 중 145회 출현">145 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>10회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>4회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>2회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 6">6</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>155회</strong><meter min="0" max="1165" value="155" aria-label="6번 전체 1165회 중 155회 출현">155 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>13회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>12회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 7">7</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>156회</strong><meter min="0" max="1165" value="156" aria-label="7번 전체 1165회 중 156회 출현">156 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>14회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>6회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 8">8</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>149회</strong><meter min="0" max="1165" value="149" aria-label="8번 전체 1165회 중 149회 출현">149 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>15회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span><span class="text-primary font-bold">최근 출현 (0회)</span></td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 9">9</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>129회</strong><meter min="0" max="1165" value="129" aria-label="9번 전체 1165회 중 129회 출현">129 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>16회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>4회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-yellow ball-sm" aria-label="번호 10">10</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>151회</strong><meter min="0" max="1165" value="151" aria-label="10번 전체 1165회 중 151회 출현">151 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>10회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>5회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 11">11</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>161회</strong><meter min="0" max="1165" value="161" aria-label="11번 전체 1165회 중 161회 출현">161 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>10회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>2회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>7회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 12">12</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>172회</strong><meter min="0" max="1165" value="172" aria-label="12번 전체 1165회 중 172회 출현">172 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>12회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>4회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>11회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 13">13</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>174회</strong><meter min="0" max="1165" value="174" aria-label="13번 전체 1165회 중 174회 출현">174 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>19회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>10회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>5회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>3회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 14">14</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>162회</strong><meter min="0" max="1165" value="162" aria-label="14번 전체 1165회 중 162회 출현">162 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>8회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>4회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span><span class="text-primary font-bold">최근 출현 (0회)</span></td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 15">15</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>157회</strong><meter min="0" max="1165" value="157" aria-label="15번 전체 1165회 중 157회 출현">157 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>17회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>8회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>12회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 16">16</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>159회</strong><meter min="0" max="1165" value="159" aria-label="16번 전체 1165회 중 159회 출현">159 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>18회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>9회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>3회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>1회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 17">17</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>157회</strong><meter min="0" max="1165" value="157" aria-label="17번 전체 1165회 중 157회 출현">157 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>10회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>21회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 18">18</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>166회</strong><meter min="0" max="1165" value="166" aria-label="18번 전체 1165회 중 166회 출현">166 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>15회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>9회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>3회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>3회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 19">19</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>161회</strong><meter min="0" max="1165" value="161" aria-label="19번 전체 1165회 중 161회 출현">161 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>13회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>7회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-blue ball-sm" aria-label="번호 20">20</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>163회</strong><meter min="0" max="1165" value="163" aria-label="20번 전체 1165회 중 163회 출현">163 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>13회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>7회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>7회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 21">21</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>158회</strong><meter min="0" max="1165" value="158" aria-label="21번 전체 1165회 중 158회 출현">158 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>11회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span><span class="text-primary font-bold">최근 출현 (0회)</span></td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 22">22</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>142회</strong><meter min="0" max="1165" value="142" aria-label="22번 전체 1165회 중 142회 출현">142 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>13회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>8회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>3회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span><span class="text-primary font-bold">최근 출현 (0회)</span></td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 23">23</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>140회</strong><meter min="0" max="1165" value="140" aria-label="23번 전체 1165회 중 140회 출현">140 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>14회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>2회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>1회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 24">24</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>162회</strong><meter min="0" max="1165" value="162" aria-label="24번 전체 1165회 중 162회 출현">162 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>16회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>9회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>3회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>1회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 25">25</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>136회</strong><meter min="0" max="1165" value="136" aria-label="25번 전체 1165회 중 136회 출현">136 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>14회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>7회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>2회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 26">26</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>151회</strong><meter min="0" max="1165" value="151" aria-label="26번 전체 1165회 중 151회 출현">151 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>11회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>3회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 27">27</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>171회</strong><meter min="0" max="1165" value="171" aria-label="27번 전체 1165회 중 171회 출현">171 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>20회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>10회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>1회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 28">28</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>155회</strong><meter min="0" max="1165" value="155" aria-label="28번 전체 1165회 중 155회 출현">155 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>17회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>9회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>2회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>1회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 29">29</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>146회</strong><meter min="0" max="1165" value="146" aria-label="29번 전체 1165회 중 146회 출현">146 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>13회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>11회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-red ball-sm" aria-label="번호 30">30</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>146회</strong><meter min="0" max="1165" value="146" aria-label="30번 전체 1165회 중 146회 출현">146 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>12회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>7회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>19회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 31">31</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>161회</strong><meter min="0" max="1165" value="161" aria-label="31번 전체 1165회 중 161회 출현">161 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>16회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>11회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>2회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>5회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 32">32</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>136회</strong><meter min="0" max="1165" value="136" aria-label="32번 전체 1165회 중 136회 출현">136 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>14회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>8회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>3회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>2회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 33">33</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>161회</strong><meter min="0" max="1165" value="161" aria-label="33번 전체 1165회 중 161회 출현">161 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>10회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>8회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 34">34</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>183회</strong><meter min="0" max="1165" value="183" aria-label="34번 전체 1165회 중 183회 출현">183 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>10회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>3회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 35">35</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>151회</strong><meter min="0" max="1165" value="151" aria-label="35번 전체 1165회 중 151회 출현">151 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>13회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>13회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 36">36</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>153회</strong><meter min="0" max="1165" value="153" aria-label="36번 전체 1165회 중 153회 출현">153 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>13회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>8회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 37">37</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>157회</strong><meter min="0" max="1165" value="157" aria-label="37번 전체 1165회 중 157회 출현">157 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>14회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>10회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 38">38</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>163회</strong><meter min="0" max="1165" value="163" aria-label="38번 전체 1165회 중 163회 출현">163 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>19회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>11회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>3회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>3회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 39">39</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>155회</strong><meter min="0" max="1165" value="155" aria-label="39번 전체 1165회 중 155회 출현">155 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>15회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>12회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-purple ball-sm" aria-label="번호 40">40</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>155회</strong><meter min="0" max="1165" value="155" aria-label="40번 전체 1165회 중 155회 출현">155 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>11회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>4회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>0회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>10회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-green ball-sm" aria-label="번호 41">41</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>145회</strong><meter min="0" max="1165" value="145" aria-label="41번 전체 1165회 중 145회 출현">145 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>11회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>7회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>5회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-green ball-sm" aria-label="번호 42">42</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>150회</strong><meter min="0" max="1165" value="150" aria-label="42번 전체 1165회 중 150회 출현">150 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>15회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>9회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>3회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span><span class="text-primary font-bold">최근 출현 (0회)</span></td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-green ball-sm" aria-label="번호 43">43</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>154회</strong><meter min="0" max="1165" value="154" aria-label="43번 전체 1165회 중 154회 출현">154 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>9회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>5회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>2회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>4회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-green ball-sm" aria-label="번호 44">44</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>154회</strong><meter min="0" max="1165" value="154" aria-label="44번 전체 1165회 중 154회 출현">154 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>12회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>8회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>2회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span>4회 연속 미출현</td>
+        </tr>
+<tr role="row">
+          <td class="stat-number text-center" role="cell">
+            <span class="lotto-ball ball-green ball-sm" aria-label="번호 45">45</span>
+          </td>
+          <td class="stat-count stat-count-all" role="cell"><span class="mobile-label">전체</span><strong>172회</strong><meter min="0" max="1165" value="172" aria-label="45번 전체 1165회 중 172회 출현">172 / 1165</meter></td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 100회</span>12회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 50회</span>6회</td>
+          <td class="stat-count" role="cell"><span class="mobile-label">최근 10회</span>1회</td>
+          <td class="stat-gap" role="cell"><span class="mobile-label">미출현 기간</span><span class="text-primary font-bold">최근 출현 (0회)</span></td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <section class="card mb-0">
+          <div class="section-header">
+            <h2 class="section-title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg> 홀수 / 짝수 비율 분포</h2>
+            <p class="section-desc">당첨 번호의 홀짝 구성별 회차 수와, 전체 8,145,060개 조합에서 그 구성이 차지하는 비율입니다. 막대 위 눈금이 전체 조합 비율입니다.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table dist-table">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">홀 : 짝</th>
+                  <th scope="col" class="text-right">출현 횟수</th>
+                  <th scope="col" class="text-right">실제 비율</th>
+                  <th scope="col" class="text-right">전체 조합 비율</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+          <td class="font-bold text-center">0 : 6</td>
+          <td class="text-right font-medium">17회</td>
+          <td class="text-right">1.5%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:4.3%"></span><span class="dist-theory" style="left:2.7%"></span></span></td>
+          <td class="text-right text-slate-500">0.9%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">1 : 5</td>
+          <td class="text-right font-medium">79회</td>
+          <td class="text-right">6.8%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:20.1%"></span><span class="dist-theory" style="left:22.0%"></span></span></td>
+          <td class="text-right text-slate-500">7.4%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">2 : 4</td>
+          <td class="text-right font-medium">261회</td>
+          <td class="text-right">22.4%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:66.4%"></span><span class="dist-theory" style="left:67.4%"></span></span></td>
+          <td class="text-right text-slate-500">22.7%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">3 : 3</td>
+          <td class="text-right font-medium">393회</td>
+          <td class="text-right">33.7%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:100.0%"></span><span class="dist-theory" style="left:99.3%"></span></span></td>
+          <td class="text-right text-slate-500">33.5%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">4 : 2</td>
+          <td class="text-right font-medium">306회</td>
+          <td class="text-right">26.3%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:77.9%"></span><span class="dist-theory" style="left:74.4%"></span></span></td>
+          <td class="text-right text-slate-500">25.1%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">5 : 1</td>
+          <td class="text-right font-medium">90회</td>
+          <td class="text-right">7.7%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:22.9%"></span><span class="dist-theory" style="left:26.9%"></span></span></td>
+          <td class="text-right text-slate-500">9.1%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">6 : 0</td>
+          <td class="text-right font-medium">19회</td>
+          <td class="text-right">1.6%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:4.8%"></span><span class="dist-theory" style="left:3.7%"></span></span></td>
+          <td class="text-right text-slate-500">1.2%</td>
+        </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card mb-0">
+          <div class="section-header">
+            <h2 class="section-title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg> 번호 합계 구간 분포</h2>
+            <p class="section-desc">당첨 번호 6개의 합계(21~255) 구간별 회차 수와, 전체 8,145,060개 조합에서 그 구간이 차지하는 비율입니다.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table dist-table">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">합계 구간</th>
+                  <th scope="col" class="text-right">출현 횟수</th>
+                  <th scope="col" class="text-right">실제 비율</th>
+                  <th scope="col" class="text-right">전체 조합 비율</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+          <td class="font-bold text-center">21 ~ 80</td>
+          <td class="text-right font-medium">34회</td>
+          <td class="text-right">2.9%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:11.3%"></span><span class="dist-theory" style="left:10.4%"></span></span></td>
+          <td class="text-right text-slate-500">2.7%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">81 ~ 100</td>
+          <td class="text-right font-medium">104회</td>
+          <td class="text-right">8.9%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:34.7%"></span><span class="dist-theory" style="left:31.7%"></span></span></td>
+          <td class="text-right text-slate-500">8.2%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">101 ~ 120</td>
+          <td class="text-right font-medium">187회</td>
+          <td class="text-right">16.1%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:62.3%"></span><span class="dist-theory" style="left:68.3%"></span></span></td>
+          <td class="text-right text-slate-500">17.6%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">121 ~ 140</td>
+          <td class="text-right font-medium">300회</td>
+          <td class="text-right">25.8%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:100.0%"></span><span class="dist-theory" style="left:96.4%"></span></span></td>
+          <td class="text-right text-slate-500">24.8%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">141 ~ 160</td>
+          <td class="text-right font-medium">250회</td>
+          <td class="text-right">21.5%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:83.3%"></span><span class="dist-theory" style="left:91.8%"></span></span></td>
+          <td class="text-right text-slate-500">23.6%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">161 ~ 180</td>
+          <td class="text-right font-medium">194회</td>
+          <td class="text-right">16.7%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:64.7%"></span><span class="dist-theory" style="left:58.7%"></span></span></td>
+          <td class="text-right text-slate-500">15.1%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">181 ~ 200</td>
+          <td class="text-right font-medium">71회</td>
+          <td class="text-right">6.1%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:23.7%"></span><span class="dist-theory" style="left:24.3%"></span></span></td>
+          <td class="text-right text-slate-500">6.3%</td>
+        </tr>
+<tr>
+          <td class="font-bold text-center">201 ~ 255</td>
+          <td class="text-right font-medium">25회</td>
+          <td class="text-right">2.1%<span class="dist-bar" aria-hidden="true"><span class="dist-actual" style="width:8.3%"></span><span class="dist-theory" style="left:6.7%"></span></span></td>
+          <td class="text-right text-slate-500">1.7%</td>
+        </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <section class="content-note">
+        <h3 class="font-bold text-slate-700 mb-2"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/></svg> 통계 데이터 안내</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          본 통계는 공식 검증된 회차 결과의 본번호 6개만을 기준으로 집계한 객관적 사실 기록입니다.
+          로또 추첨은 매 회차 독립 시행이므로 과거의 출현 빈도나 미출현 기간이 미래의 당첨 확률을 높이거나 낮추지 않습니다.
+        </p>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          기대 출현 횟수와 전체 조합 비율은 1~45에서 6개를 고르는 8,145,060개 조합을 모두 센 이론값입니다. 실제 값이 이론값과 다른 것은 회차 수가 적을 때 흔히 생기는 우연한 차이이며, 특정 번호나 패턴이 더 잘 나온다는 뜻이 아닙니다.
+        </p>
+      </section>
+    
+    </div>
+  
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></strong> <span class="footer-brand-en">(My Lotto Map)</span>
+        </div>
+        <p class="footer-desc">전국 로또 명당, 당첨 결과와 내 번호를 한곳에서</p>
+        <nav class="footer-links" aria-label="서비스 안내">
+          <a href="/about/">서비스 소개</a>
+          <a href="/data-methodology/">데이터·통계 설명</a>
+          <a href="/guides/">가이드</a>
+          <a href="/privacy/">개인정보처리방침</a>
+          <a href="/terms/">이용약관</a>
+          <a href="/contact/">문의</a>
+        </nav>
+        <p class="footer-notice">본 서비스는 동행복권 공식 데이터를 기반으로 제공하며, 특정 번호의 당첨을 보장하지 않습니다.</p>
+        <p class="footer-copy">&copy; 2026 마이로또맵. 모든 권리 보유.</p>
+      </div>
+    </footer>
+  
+  
+</body>
+</html>

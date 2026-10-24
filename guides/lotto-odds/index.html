@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/assets/shared/brand-symbol.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/shared/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/shared/apple-touch-icon.png">
+  <title>로또 당첨 확률과 번호 조합의 관계 - 마이로또맵 가이드</title>
+  <meta name="description" content="로또 6/45의 전체 조합 수 8,145,060개와 1등부터 5등까지의 정확한 당첨 확률을 조합 계산으로 보여 주고, 어떤 번호 조합도 확률이 같은 이유를 설명합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="마이로또맵">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="로또 당첨 확률과 번호 조합의 관계 - 마이로또맵 가이드">
+  <meta property="og:description" content="로또 6/45의 전체 조합 수 8,145,060개와 1등부터 5등까지의 정확한 당첨 확률을 조합 계산으로 보여 주고, 어떤 번호 조합도 확률이 같은 이유를 설명합니다.">
+  <meta property="og:url" content="https://mylottomap.com/guides/lotto-odds/">
+  <meta property="og:image" content="https://mylottomap.com/assets/shared/og-image-20261013.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1730">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="마이로또맵 - 전국 로또 1·2등 배출 판매점 지도">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mylottomap.com/guides/lotto-odds/">
+  <meta name="google-adsense-account" content="ca-pub-2341876558710612">
+  <meta name="naver-site-verification" content="ba5b82f9d0650f99c5aefe9331b95e97f63ca825">
+  <link rel="preload" href="/assets/shared/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/shared/styles.css">
+</head>
+<body class="page-guides-lotto-odds">
+  
+  <a href="#main-content" class="skip-to-content">본문으로 건너뛰기</a>
+  
+    <header class="site-header">
+      <div class="header-brand brand-page"><a href="/" class="brand-link" aria-label="마이로또맵 홈"><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></a><strong class="header-page-title">로또 당첨 확률과 번호 조합의 관계</strong></div>
+      
+      <nav class="nav-container" aria-label="주요 메뉴">
+        <div class="nav-pill-group">
+          <div class="nav-main-links">
+            <a href="/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/></svg></span>
+        <span class="nav-label-full">명당맵</span>
+        <span class="nav-label-short">명당맵</span>
+      </a>
+<a href="/results/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3h8v7a4 4 0 0 1-8 0Zm0 2H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 2v5m-4 2h8m-9 0h10"/></svg></span>
+        <span class="nav-label-full">당첨 결과</span>
+        <span class="nav-label-short">결과</span>
+      </a>
+<a href="/stats/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg></span>
+        <span class="nav-label-full">번호 통계</span>
+        <span class="nav-label-short">통계</span>
+      </a>
+<a href="/generator/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 3v4m-2-2h4"/></svg></span>
+        <span class="nav-label-full">번호 생성</span>
+        <span class="nav-label-short">생성</span>
+      </a>
+<a href="/my-numbers/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z"/><path d="M9 8h6m-6 4h4"/></svg></span>
+        <span class="nav-label-full">내 번호</span>
+        <span class="nav-label-short">내 번호</span>
+      </a>
+          </div>
+          <div class="nav-settings-wrap">
+            <a href="/settings/" class="nav-settings" title="환경 설정" aria-label="환경 설정">
+      <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3-.5 2-2 1L5 5l-2 4 2 1v4l-2 1 2 4 2.5-1 2 1 .5 2h4l.5-2 2-1 2.5 1 2-4-2-1v-4l2-1-2-4-2.5 1-2-1-.5-2Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="nav-settings-label">설정</span>
+    </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+  
+  <main id="main-content" class="main-content">
+    
+    <article class="content-page themed-page guide-detail-page">
+      <nav class="guide-detail-nav" aria-label="가이드 탐색"><a href="/guides/" class="content-link">&larr; 가이드 목록</a></nav>
+      <header class="page-intro themed-intro guide-detail-intro">
+        <span class="page-intro-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z"/><path d="M9 8h6m-6 4h4"/></svg></span>
+        <div class="guide-detail-heading">
+          <h1>로또 당첨 확률과 번호 조합의 관계</h1>
+          <p class="guide-detail-meta"><span><strong>작성일</strong> 2026-10-08</span><span><strong>수정일</strong> 2026-10-08</span></p>
+        </div>
+      </header>
+      <div class="card guide-detail-content">
+        <p class="mb-4 leading-relaxed">로또 6/45는 1부터 45까지의 번호 중 6개를 고르는 복권입니다. 추첨에서는 본번호 6개와 보너스 번호 1개가 나오며, 등수는 내 번호 6개가 본번호와 몇 개 일치하는지, 그리고 2등의 경우 보너스 번호가 일치하는지로 정해집니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">전체 조합 수</h2>
+<p class="mb-4 leading-relaxed">45개 중 순서와 상관없이 6개를 고르는 방법의 수는 조합 공식으로 계산합니다.</p>
+<p class="mb-4 leading-relaxed"><strong>C(45, 6) = (45 × 44 × 43 × 42 × 41 × 40) ÷ (6 × 5 × 4 × 3 × 2 × 1) = 8,145,060</strong></p>
+<p class="mb-4 leading-relaxed">한 게임(6개 번호 1세트)은 이 8,145,060개 조합 중 하나입니다. 추첨 번호도 이 중 하나로 정해지므로, 한 게임이 1등이 될 확률은 8,145,060분의 1입니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">등수별 당첨 확률</h2>
+<p class="mb-4 leading-relaxed">추첨된 본번호 6개를 &quot;당첨 번호&quot;, 나머지 39개를 &quot;비당첨 번호&quot;(보너스 번호 1개 포함)로 나누어 셉니다.</p>
+<div class="table-wrap mb-4"><table class="data-table"><thead><tr><th scope="col">등수</th><th scope="col">당첨 조건</th><th scope="col">해당 조합 수 계산</th><th scope="col">조합 수</th><th scope="col">확률</th></tr></thead><tbody><tr><td>1등</td><td>6개 일치</td><td>C(6,6)</td><td>1</td><td>1 / 8,145,060</td></tr><tr><td>2등</td><td>5개 + 보너스 일치</td><td>C(6,5) × 1</td><td>6</td><td>6 / 8,145,060 (= 1 / 1,357,510)</td></tr><tr><td>3등</td><td>5개 일치 (보너스 불일치)</td><td>C(6,5) × 38</td><td>228</td><td>228 / 8,145,060 (약 1 / 35,724)</td></tr><tr><td>4등</td><td>4개 일치</td><td>C(6,4) × C(39,2) = 15 × 741</td><td>11,115</td><td>11,115 / 8,145,060 (약 1 / 733)</td></tr><tr><td>5등</td><td>3개 일치</td><td>C(6,3) × C(39,3) = 20 × 9,139</td><td>182,780</td><td>182,780 / 8,145,060 (약 1 / 45)</td></tr></tbody></table></div>
+<ul class="list-disc list-inside space-y-1 mb-4"><li>2등: 당첨 번호 6개 중 5개를 고르는 방법 6가지에, 나머지 한 자리가 보너스 번호인 경우 1가지를 곱합니다.</li><li>3등: 나머지 한 자리가 보너스 번호도, 당첨 번호도 아닌 38개 중 하나여야 합니다.</li><li>4등·5등: 나머지 자리는 비당첨 번호 39개(보너스 포함) 중에서 고르므로 보너스 일치 여부와 관계가 없습니다.</li></ul>
+<p class="mb-4 leading-relaxed">1~5등 중 하나라도 당첨될 확률은 다섯 경우를 더한 194,130 / 8,145,060으로, 약 42게임에 1번(약 2.38%)입니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">어떤 번호 조합도 확률은 같습니다</h2>
+<p class="mb-4 leading-relaxed">추첨은 45개 번호에서 6개를 무작위로 뽑는 방식이므로 8,145,060개 조합은 모두 같은 확률을 가집니다. 1, 2, 3, 4, 5, 6처럼 규칙적으로 보이는 조합도, 고르게 흩어진 조합도 1등 확률은 똑같이 8,145,060분의 1입니다.</p>
+<ul class="list-disc list-inside space-y-1 mb-4"><li>서로 다른 조합을 더 많이 사면 그 수만큼만 확률이 커집니다. 서로 다른 5게임이면 1등 확률은 5 / 8,145,060입니다.</li><li>같은 회차에 같은 번호를 여러 장 사면 맞힐 확률은 그대로이고, 당첨되면 당첨금을 여러 몫으로 받습니다.</li><li>과거 당첨 번호, 홀짝 비율, 번호 합계 같은 조건으로 번호를 걸러도 남은 각 조합의 확률은 바뀌지 않습니다.</li></ul>
+<p class="mb-4 leading-relaxed">1등 당첨금은 같은 회차의 1등 당첨 게임 수로 나누어 지급되므로 회차마다 1게임당 금액이 달라집니다. 실제 회차별 당첨금과 당첨자 수는 <a href="/results/" class="content-link">당첨 결과</a>에서 확인할 수 있습니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">마이로또맵 도구와의 관계</h2>
+<p class="mb-4 leading-relaxed">마이로또맵의 <a href="/generator/" class="content-link">번호 생성</a>은 이 원리에 따라 45개 번호를 같은 가능성으로 고르는 무작위 도구입니다. 당첨을 예측하거나 확률을 높여 주지 않습니다. 게임 규칙은 <a href="https://www.dhlottery.co.kr/lt645/intro" class="content-link" rel="noopener" target="_blank">동행복권 로또 6/45 소개</a>에서도 확인할 수 있습니다.</p>
+      </div>
+    </article>
+  
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></strong> <span class="footer-brand-en">(My Lotto Map)</span>
+        </div>
+        <p class="footer-desc">전국 로또 명당, 당첨 결과와 내 번호를 한곳에서</p>
+        <nav class="footer-links" aria-label="서비스 안내">
+          <a href="/about/">서비스 소개</a>
+          <a href="/data-methodology/">데이터·통계 설명</a>
+          <a href="/guides/">가이드</a>
+          <a href="/privacy/">개인정보처리방침</a>
+          <a href="/terms/">이용약관</a>
+          <a href="/contact/">문의</a>
+        </nav>
+        <p class="footer-notice">본 서비스는 동행복권 공식 데이터를 기반으로 제공하며, 특정 번호의 당첨을 보장하지 않습니다.</p>
+        <p class="footer-copy">&copy; 2026 마이로또맵. 모든 권리 보유.</p>
+      </div>
+    </footer>
+  
+  
+</body>
+</html>

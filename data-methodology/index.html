@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/assets/shared/brand-symbol.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/shared/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/shared/apple-touch-icon.png">
+  <title>데이터·통계 설명 - 마이로또맵</title>
+  <meta name="description" content="마이로또맵 당첨 결과와 판매점 정보의 출처(동행복권·공공데이터포털), 주 1~2회 수집 주기, 검증 절차, 통계와 배출 횟수의 한계, 좌표 현황을 설명합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="마이로또맵">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="데이터·통계 설명 - 마이로또맵">
+  <meta property="og:description" content="마이로또맵 당첨 결과와 판매점 정보의 출처(동행복권·공공데이터포털), 주 1~2회 수집 주기, 검증 절차, 통계와 배출 횟수의 한계, 좌표 현황을 설명합니다.">
+  <meta property="og:url" content="https://mylottomap.com/data-methodology/">
+  <meta property="og:image" content="https://mylottomap.com/assets/shared/og-image-20261013.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1730">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="마이로또맵 - 전국 로또 1·2등 배출 판매점 지도">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mylottomap.com/data-methodology/">
+  <meta name="google-adsense-account" content="ca-pub-2341876558710612">
+  <meta name="naver-site-verification" content="ba5b82f9d0650f99c5aefe9331b95e97f63ca825">
+  <link rel="preload" href="/assets/shared/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/shared/styles.css">
+</head>
+<body class="page-data-methodology">
+  
+  <a href="#main-content" class="skip-to-content">본문으로 건너뛰기</a>
+  
+    <header class="site-header">
+      <div class="header-brand brand-page"><a href="/" class="brand-link" aria-label="마이로또맵 홈"><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></a><strong class="header-page-title">데이터·통계 설명</strong></div>
+      
+      <nav class="nav-container" aria-label="주요 메뉴">
+        <div class="nav-pill-group">
+          <div class="nav-main-links">
+            <a href="/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/></svg></span>
+        <span class="nav-label-full">명당맵</span>
+        <span class="nav-label-short">명당맵</span>
+      </a>
+<a href="/results/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3h8v7a4 4 0 0 1-8 0Zm0 2H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 2v5m-4 2h8m-9 0h10"/></svg></span>
+        <span class="nav-label-full">당첨 결과</span>
+        <span class="nav-label-short">결과</span>
+      </a>
+<a href="/stats/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg></span>
+        <span class="nav-label-full">번호 통계</span>
+        <span class="nav-label-short">통계</span>
+      </a>
+<a href="/generator/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 3v4m-2-2h4"/></svg></span>
+        <span class="nav-label-full">번호 생성</span>
+        <span class="nav-label-short">생성</span>
+      </a>
+<a href="/my-numbers/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z"/><path d="M9 8h6m-6 4h4"/></svg></span>
+        <span class="nav-label-full">내 번호</span>
+        <span class="nav-label-short">내 번호</span>
+      </a>
+          </div>
+          <div class="nav-settings-wrap">
+            <a href="/settings/" class="nav-settings" title="환경 설정" aria-label="환경 설정">
+      <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3-.5 2-2 1L5 5l-2 4 2 1v4l-2 1 2 4 2.5-1 2 1 .5 2h4l.5-2 2-1 2.5 1 2-4-2-1v-4l2-1-2-4-2.5 1-2-1-.5-2Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="nav-settings-label">설정</span>
+    </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+  
+  <main id="main-content" class="main-content">
+    
+    <div class="content-page themed-page info-page methodology-page">
+      <div class="page-intro themed-intro">
+        <span class="page-intro-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg></span>
+        <div><h1 class="mb-2">데이터·통계 설명</h1>
+        <p>마이로또맵이 보여 주는 당첨 결과·통계·판매점 정보의 출처와 처리 방식입니다.</p></div>
+      </div>
+
+      <section class="card mb-6">
+        <h2 class="section-title mb-3">출처</h2>
+        <div class="table-wrap">
+          <table class="data-table source-table" role="table">
+            <caption class="sr-only">정보별 출처와 현재 확인 상태</caption>
+            <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">정보</th><th scope="col" role="columnheader">출처</th><th scope="col" role="columnheader">현재 상태</th></tr></thead>
+            <tbody role="rowgroup">
+              <tr role="row"><td role="cell"><span class="mobile-label">정보</span>회차별 당첨 번호·보너스·등수별 당첨금·당첨자 수</td><td role="cell"><span class="mobile-label">출처</span><a href="https://www.dhlottery.co.kr/lt645/result" class="content-link" rel="noopener" target="_blank">동행복권 공식 추첨 결과 화면</a></td><td role="cell"><span class="mobile-label">현재 상태</span>1회 ~ 1247회 중 검증된 1247개 회차, 마지막 확인 2026-10-25 05:46 (한국 시간)</td></tr>
+              <tr role="row"><td role="cell"><span class="mobile-label">정보</span>판매점 상호·주소·1·2등 배출 이력</td><td role="cell"><span class="mobile-label">출처</span><a href="https://www.dhlottery.co.kr/wnprchsplcsrch/home" class="content-link" rel="noopener" target="_blank">동행복권 공식 당첨 판매점</a></td><td role="cell"><span class="mobile-label">현재 상태</span>262회 ~ 1247회 · 마지막 확인 2026-10-25 13:34 (한국 시간)</td></tr>
+              <tr role="row"><td role="cell"><span class="mobile-label">정보</span>판매점 주소 대조·영업 상태 판별 자료</td><td role="cell"><span class="mobile-label">출처</span><a href="https://www.data.go.kr/data/15086355/fileData.do" class="content-link" rel="noopener" target="_blank">공공데이터포털 복권판매점 목록</a></td><td role="cell"><span class="mobile-label">현재 상태</span>공개 판매점 10608곳 중 좌표 확인 10607곳, 좌표 미확보 1곳. 목록 일치 여부는 현장 영업 확인을 대신하지 않습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-sm text-slate-600">마이로또맵은 동행복권의 공식 API를 사용하지 않습니다. 공식 결과 화면에 표시되는 값을 확인해 가져오며, 표시하는 모든 결과에는 출처와 확인 시각을 기록합니다.</p>
+      </section>
+
+      <section class="card mb-6">
+        <h2 class="section-title mb-3">수집 주기와 업데이트</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>당첨 결과는 추첨 후 공식 자료를 확인하고 검증을 통과한 데이터만 반영합니다. 화면의 마지막 확인 시각을 기준으로 읽어 주세요.</li>
+          <li>추첨 결과가 발표되지 않은 회차는 만들지 않고 결과 대기로 표시합니다.</li>
+          <li>가져오기나 검증에 실패하면 마지막 정상 데이터를 그대로 두고 화면에 업데이트 지연을 표시합니다.</li>
+          <li>판매점 목록은 공공데이터포털 자료의 갱신 주기(연 단위)에 맞춰 반영합니다.</li>
+        </ul>
+      </section>
+
+      <section class="card mb-6">
+        <h2 class="section-title mb-3">검증 절차</h2>
+        <ol class="verification-steps">
+          <li>번호가 1~45 범위인지, 본번호 6개가 서로 다른지, 보너스 번호가 본번호와 겹치지 않는지 검사합니다.</li>
+          <li>회차 번호 중복과 추첨일 형식(연도-월-일)을 검사합니다.</li>
+          <li>당첨금·당첨자 수는 확인되지 않은 값(미확보)과 실제 0을 구분해 저장합니다.</li>
+          <li>이미 저장된 회차와 값이 다르면 덮어쓰지 않고 중단해 원인을 확인합니다.</li>
+          <li>모든 검사를 통과한 경우에만 공개 데이터를 교체합니다.</li>
+        </ol>
+      </section>
+
+      <section class="card mb-6">
+        <h2 class="section-title mb-3">집계 기간과 통계의 한계</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>당첨 결과·번호 통계·내 번호 당첨 확인은 같은 검증 데이터를 사용합니다. 현재 범위: 1회 ~ 1247회 중 검증된 1247개 회차.</li>
+          <li><a href="/stats/" class="content-link">번호 통계</a>는 화면에 표시된 분석 회차 수만큼의 기록으로 계산합니다. 회차 수가 적으면 번호별 차이가 우연에 크게 좌우됩니다.</li>
+          <li>매 회차 추첨은 이전 결과와 독립이므로, 과거에 자주 나왔거나 오래 나오지 않은 번호가 다음 회차에 더 잘 나온다는 근거는 없습니다.</li>
+          <li>판매점 배출 이력 집계 기간: 262회 ~ 1247회.</li>
+        </ul>
+      </section>
+
+      <section id="shop-count-methodology" class="card mb-6">
+        <h2 class="section-title mb-3">배출 횟수를 당첨률로 해석하지 않는 이유</h2>
+        <p class="leading-relaxed">판매점의 1·2등 배출 횟수는 그 판매점에서 팔린 복권 수에 크게 좌우됩니다. 판매량이 많으면 같은 확률에서도 당첨이 더 많이 나옵니다. 마이로또맵은 판매점별 판매량 자료를 가지고 있지 않으므로 배출 횟수를 판매점의 당첨 확률·당첨률로 바꾸어 표시하지 않으며, 특정 판매점에서 사면 당첨 가능성이 높아진다고 안내하지 않습니다. 자세한 내용은 <a href="/guides/shop-win-count/" class="content-link">명당 배출 횟수를 해석할 때 알아둘 점</a>을 참고하세요.</p>
+        <p class="leading-relaxed mt-3">인터넷 구매(동행복권 사이트) 당첨 1등 132건 · 2등 826건은 실제 판매점이 없어 지도·판매점 집계에서 제외했습니다.</p>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title mb-3">판매점 좌표</h2>
+        <p class="leading-relaxed mb-2">지도 핀은 출처와 확인 시각이 기록된 좌표가 있는 판매점에만 표시합니다. 현재: 공개 판매점 10608곳 중 좌표 확인 10607곳, 좌표 미확보 1곳.</p>
+        <p class="leading-relaxed">지도 서비스의 주소 검색 결과는 이용 조건상 저장해 다시 쓸 수 없어 좌표 출처로 사용하지 않습니다. 좌표가 없는 판매점은 지도 핀 없이 주소와 외부 길찾기 링크로 제공합니다.</p>
+        <p class="mt-4 text-xs text-slate-400">수정일 2026-10-09</p>
+      </section>
+    </div>
+  
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></strong> <span class="footer-brand-en">(My Lotto Map)</span>
+        </div>
+        <p class="footer-desc">전국 로또 명당, 당첨 결과와 내 번호를 한곳에서</p>
+        <nav class="footer-links" aria-label="서비스 안내">
+          <a href="/about/">서비스 소개</a>
+          <a href="/data-methodology/">데이터·통계 설명</a>
+          <a href="/guides/">가이드</a>
+          <a href="/privacy/">개인정보처리방침</a>
+          <a href="/terms/">이용약관</a>
+          <a href="/contact/">문의</a>
+        </nav>
+        <p class="footer-notice">본 서비스는 동행복권 공식 데이터를 기반으로 제공하며, 특정 번호의 당첨을 보장하지 않습니다.</p>
+        <p class="footer-copy">&copy; 2026 마이로또맵. 모든 권리 보유.</p>
+      </div>
+    </footer>
+  
+  
+</body>
+</html>

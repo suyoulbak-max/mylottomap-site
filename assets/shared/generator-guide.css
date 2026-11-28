@@ -1,0 +1,33 @@
+.generator-guide { margin-top: var(--space-6); }
+.guide-controls, .guide-frequencies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+.guide-controls > *, .guide-shop > * { min-width: 0; }
+.guide-controls { padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-primary-soft); margin-bottom: var(--space-3); }
+.guide-caption, .guide-source, .guide-badges, .guide-frequency h4 span { font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-body); overflow-wrap: anywhere; }
+.guide-caption { margin-top: var(--space-2); }
+.guide-source { margin-top: var(--space-4); padding: var(--space-3); border-radius: var(--radius-sm); background: var(--color-bg); }
+.guide-range { margin-top: var(--space-5); font-weight: 700; color: var(--color-primary-strong); }
+.guide-section { margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
+.guide-section h3 { font-size: var(--text-lg); font-weight: 700; }
+.guide-section h4 { font-size: var(--text-md); font-weight: 600; }
+.guide-frequencies { margin-top: var(--space-4); }
+.guide-frequency { padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-bg); }
+.guide-frequency h4 span { display: block; font-weight: 500; margin-top: var(--space-1); }
+.guide-number-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.guide-shop-list { list-style: none; display: grid; gap: var(--space-3); margin-top: var(--space-4); padding: 0; }
+.guide-shop { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding: var(--space-4); background: var(--color-bg); border-radius: var(--radius-md); }
+.guide-shop .btn { flex: none; min-height: var(--control-height); }
+.guide-badges { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.guide-inline-link { display: inline-flex; align-items: center; min-height: var(--control-height); margin-top: var(--space-2); }
+.guide-empty { padding: var(--space-4); margin-top: var(--space-3); background: var(--color-bg); border-radius: var(--radius-md); }
+.ticket-storage-note { margin-top: var(--space-4); }
+.ticket-next-step { margin-top: var(--space-5); padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-primary-soft); display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.ticket-next-step p { font-size: var(--text-sm); }
+.ticket-match-summary { font-size: var(--text-sm); color: var(--color-primary-strong); margin-top: var(--space-2); }
+.saved-ticket .ticket-match-summary { max-width: var(--content-measure); }
+#saved-tickets { scroll-margin-top: calc(var(--control-height) + var(--space-8)); }
+@media (max-width: 767px) {
+  .guide-controls, .guide-frequencies { grid-template-columns: minmax(0, 1fr); }
+  .guide-shop { align-items: stretch; flex-direction: column; }
+  .guide-shop .btn { align-self: flex-start; }
+  .ticket-next-step { align-items: flex-start; flex-direction: column; }
+}

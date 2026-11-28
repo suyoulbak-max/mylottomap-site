@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/assets/shared/brand-symbol.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/shared/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/shared/apple-touch-icon.png">
+  <title>자동·반자동·수동, 당첨 건수는 어떻게 읽을까? - 마이로또맵 가이드</title>
+  <meta name="description" content="로또 번호 선택 방식(자동·반자동·수동)의 차이와, 자동 당첨 건수가 많다는 사실만으로 자동의 당첨률이 높다고 말할 수 없는 이유를 판매 비중과 이항분포 계산 예로 설명합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="마이로또맵">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="자동·반자동·수동, 당첨 건수는 어떻게 읽을까? - 마이로또맵 가이드">
+  <meta property="og:description" content="로또 번호 선택 방식(자동·반자동·수동)의 차이와, 자동 당첨 건수가 많다는 사실만으로 자동의 당첨률이 높다고 말할 수 없는 이유를 판매 비중과 이항분포 계산 예로 설명합니다.">
+  <meta property="og:url" content="https://mylottomap.com/guides/auto-manual-selection/">
+  <meta property="og:image" content="https://mylottomap.com/assets/shared/og-image-20261013.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1730">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="마이로또맵 - 전국 로또 1·2등 배출 판매점 지도">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mylottomap.com/guides/auto-manual-selection/">
+  <meta name="google-adsense-account" content="ca-pub-2341876558710612">
+  <meta name="naver-site-verification" content="ba5b82f9d0650f99c5aefe9331b95e97f63ca825">
+  <link rel="preload" href="/assets/shared/fonts/mylottomap-sans-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/shared/styles.css">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"자동·반자동·수동, 당첨 건수는 어떻게 읽을까?","description":"로또 번호 선택 방식(자동·반자동·수동)의 차이와, 자동 당첨 건수가 많다는 사실만으로 자동의 당첨률이 높다고 말할 수 없는 이유를 판매 비중과 이항분포 계산 예로 설명합니다.","datePublished":"2026-10-24","dateModified":"2026-11-25","inLanguage":"ko-KR","mainEntityOfPage":"https://mylottomap.com/guides/auto-manual-selection/","image":"https://mylottomap.com/assets/shared/og-image-20261013.png","author":{"@type":"Organization","name":"마이로또맵 데이터팀","url":"https://mylottomap.com/about/"},"publisher":{"@type":"Organization","name":"마이로또맵","url":"https://mylottomap.com/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"자동으로 사면 수동보다 당첨 확률이 높나요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 공정한 추첨에서 한 조합의 1등 확률은 선택 방식과 관계없이 8,145,060분의 1입니다. 자동 당첨이 많아 보이는 것은 자동으로 팔린 게임이 많기 때문일 수 있습니다."}},{"@type":"Question","name":"반자동은 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"원하는 번호를 1개 이상 6개 미만으로 직접 고르고, 나머지 번호를 자동으로 채우는 방식입니다. 동행복권 로또6/45 안내에 정의되어 있습니다."}},{"@type":"Question","name":"자동·수동별 당첨률을 계산하려면 무엇이 필요한가요?","acceptedAnswer":{"@type":"Answer","text":"각 방식으로 판매된 전체 게임 수가 필요합니다. 공식 결과의 선택 방식별 당첨 건수만으로는 판매 비중을 알 수 없어 당첨률을 계산할 수 없습니다."}}]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"가이드","item":"https://mylottomap.com/guides/"},{"@type":"ListItem","position":2,"name":"자동·반자동·수동, 당첨 건수는 어떻게 읽을까?"}]}]</script>
+</head>
+<body class="page-guides-auto-manual-selection">
+  
+  <a href="#main-content" class="skip-to-content">본문으로 건너뛰기</a>
+  
+    <header class="site-header">
+      <div class="header-brand brand-page"><a href="/" class="brand-link" aria-label="마이로또맵 홈"><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></a><strong class="header-page-title">자동·반자동·수동, 당첨 건수는 어떻게 읽을까?</strong></div>
+      
+      <nav class="nav-container" aria-label="주요 메뉴">
+        <div class="nav-pill-group">
+          <div class="nav-main-links">
+            <a href="/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/></svg></span>
+        <span class="nav-label-full">명당맵</span>
+        <span class="nav-label-short">명당맵</span>
+      </a>
+<a href="/results/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3h8v7a4 4 0 0 1-8 0Zm0 2H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 2v5m-4 2h8m-9 0h10"/></svg></span>
+        <span class="nav-label-full">당첨 결과</span>
+        <span class="nav-label-short">결과</span>
+      </a>
+<a href="/stats/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></svg></span>
+        <span class="nav-label-full">번호 통계</span>
+        <span class="nav-label-short">통계</span>
+      </a>
+<a href="/generator/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 3v4m-2-2h4"/></svg></span>
+        <span class="nav-label-full">번호 생성</span>
+        <span class="nav-label-short">생성</span>
+      </a>
+<a href="/my-numbers/" class="nav-link">
+        <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z"/><path d="M9 8h6m-6 4h4"/></svg></span>
+        <span class="nav-label-full">내 번호</span>
+        <span class="nav-label-short">내 번호</span>
+      </a>
+          </div>
+          <div class="nav-settings-wrap">
+            <a href="/settings/" class="nav-settings" title="환경 설정" aria-label="환경 설정">
+      <span class="nav-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3-.5 2-2 1L5 5l-2 4 2 1v4l-2 1 2 4 2.5-1 2 1 .5 2h4l.5-2 2-1 2.5 1 2-4-2-1v-4l2-1-2-4-2.5 1-2-1-.5-2Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="nav-settings-label">설정</span>
+    </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+  
+  <main id="main-content" class="main-content">
+    
+    <article class="content-page themed-page guide-detail-page">
+      <nav class="guide-detail-nav" aria-label="가이드 탐색"><a href="/guides/" class="content-link">&larr; 가이드 목록</a></nav>
+      <header class="page-intro themed-intro guide-detail-intro">
+        <span class="page-intro-icon" aria-hidden="true"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z"/><path d="M9 8h6m-6 4h4"/></svg></span>
+        <div class="guide-detail-heading">
+          <h1>자동·반자동·수동, 당첨 건수는 어떻게 읽을까?</h1>
+          <p class="guide-detail-meta"><span><strong>작성</strong> 마이로또맵 데이터팀</span><span><strong>작성일</strong> 2026-10-24</span><span><strong>수정일</strong> 2026-11-25</span></p>
+        </div>
+      </header>
+      <div class="card guide-detail-content">
+        <p class="mb-4 leading-relaxed">어떤 회차에서 자동 당첨이 많았다는 소식을 보면 다음에는 자동을 골라야 할지 고민하기 쉽습니다. 하지만 당첨 건수와 당첨률은 다른 숫자입니다. 번호를 고른 방법을 비교하려면 당첨된 게임뿐 아니라 그 방법으로 판매된 전체 게임 수도 필요합니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">자동·반자동·수동은 무엇이 다른가요?</h2>
+<p class="mb-4 leading-relaxed">번호를 누가 고르느냐의 차이입니다. 동행복권 안내에서 수동은 번호 6개를 직접 선택하는 방식, 자동은 시스템이 번호를 선택하는 방식, 반자동은 원하는 번호를 1개 이상 6개 미만으로 고르고 나머지를 자동으로 채우는 방식입니다.</p>
+<p class="mb-4 leading-relaxed">이는 번호 선택의 주체를 구분한 것으로, 같은 번호 조합에 선택 방식별로 다른 당첨 기준을 적용하는 것은 아닙니다. 마이로또맵 <a href="/generator/" class="content-link">번호 생성기</a>의 포함 번호 설정도 일부 번호를 정해 놓고 나머지를 채워 보는 데 사용할 수 있습니다. 다만 생성 결과나 브라우저 저장은 복권 구매가 아닙니다. 실제 발행된 복권과 공식 구매 내역을 따로 확인해야 합니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">반자동으로 번호를 몇 개 정하면 무엇이 달라지나요?</h2>
+<p class="mb-4 leading-relaxed">남은 자리가 채워질 수 있는 경우의 수만 줄어듭니다. 직접 고른 번호가 k개면 나머지는 (45 − k)개에서 (6 − k)개를 고르므로, 2개를 정하면 123,410가지, 5개를 정하면 40가지 중 하나가 됩니다. 1등 확률은 그대로입니다.</p>
+<div class="table-wrap mb-4"><table class="data-table"><thead><tr><th scope="col">직접 정한 번호</th><th scope="col">자동으로 채워질 수 있는 경우의 수</th></tr></thead><tbody><tr><td>1개</td><td>1,086,008</td></tr><tr><td>2개</td><td>123,410</td></tr><tr><td>3개</td><td>11,480</td></tr><tr><td>4개</td><td>820</td></tr><tr><td>5개</td><td>40</td></tr></tbody></table></div>
+<p class="mb-4 leading-relaxed">경우의 수가 줄어도 최종적으로 손에 쥐는 것은 6개 번호 한 조합이며, 그 조합의 1등 확률은 8,145,060분의 1입니다. 반자동으로 좋아하는 번호를 넣어도 그 조합 자체가 특별히 유리해지지는 않습니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">&#39;자동 8게임, 수동 2게임&#39;만 보면 무엇이 빠지나요?</h2>
+<p class="mb-4 leading-relaxed">분모인 판매 게임 수가 빠집니다. 자동으로 판매된 게임이 수동보다 훨씬 많다면 자동 당첨이 더 많은 것은 당연한 결과입니다. 판매 게임 수 없이 당첨 건수만 비교하면 선택 방식의 효과를 판단할 수 없습니다.</p>
+<p class="mb-4 leading-relaxed">다음은 실제 회차 자료가 아닌 분모 설명용 가상 사례입니다. 자동으로 800만 게임, 수동으로 200만 게임이 판매되고 각각 8게임과 2게임이 당첨됐다고 가정해 보세요. 당첨 건수는 자동이 네 배지만, 판매 100만 게임당 당첨 건수는 두 방식 모두 1게임입니다.</p>
+<p class="mb-4 leading-relaxed">이 예의 핵심은 자동과 수동의 실제 당첨률이 같았다는 주장이 아닙니다. 분모 없이 분자만 비교하면 선택 방식의 효과를 판단할 수 없다는 뜻입니다. 공식 결과의 자동·수동·반자동 당첨 건수만으로 판매 비중까지 알 수는 없습니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">판매 비중을 모르면 한 회차의 자동 건수는 어떻게 읽나요?</h2>
+<p class="mb-4 leading-relaxed">여러 판매 비중을 가정해 보고, 관측된 건수가 각 가정에서 흔한 결과인지 확인하는 방법이 있습니다. 1등 12게임 중 자동이 8게임이었다면, 자동 판매 비중이 50%여도 70%여도 충분히 나올 수 있는 숫자라 어느 쪽인지 가려낼 수 없습니다.</p>
+<p class="mb-4 leading-relaxed">다음은 가상의 회차를 놓고, 선택 방식이 당첨에 아무 영향이 없다고 가정한 이항분포 계산입니다.</p>
+<div class="table-wrap mb-4"><table class="data-table"><thead><tr><th scope="col">가정한 자동 판매 비중</th><th scope="col">12게임 중 자동 기대 건수</th><th scope="col">자동이 정확히 8게임일 확률</th><th scope="col">자동이 8게임 이상일 확률</th></tr></thead><tbody><tr><td>50%</td><td>6.0게임</td><td>약 12.1%</td><td>약 19.4%</td></tr><tr><td>60%</td><td>7.2게임</td><td>약 21.3%</td><td>약 43.8%</td></tr><tr><td>70%</td><td>8.4게임</td><td>약 23.1%</td><td>약 72.4%</td></tr><tr><td>80%</td><td>9.6게임</td><td>약 13.3%</td><td>약 92.7%</td></tr></tbody></table></div>
+<p class="mb-4 leading-relaxed">네 가정 모두에서 &#39;12게임 중 8게임&#39;은 드물지 않은 결과입니다. 한 회차의 당첨 게임은 수가 적어 우연에 크게 흔들리므로, 회차별 선택 방식 기록에서 방식의 유불리를 읽어 내기는 어렵습니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">마이로또맵에서는 선택 방식 기록을 어디서 보나요?</h2>
+<p class="mb-4 leading-relaxed">회차별 <a href="/winning-shops/" class="content-link">1등 배출점</a> 화면에서 판매점마다 &#39;구분 · 자동&#39;처럼 당첨 게임의 선택 방식이 표시됩니다. 여러 회차를 모은 비율을 볼 때도 회차·등수·당첨 게임 수를 먼저 확인하고, 판매 게임 수가 없으면 당첨률로 바꾸지 않습니다.</p>
+<p class="mb-4 leading-relaxed">확보된 기록 전체의 선택 방식별 1등 건수: 262~1251회 판매점 1등 9,253건 중 자동 6,165건(66.6%), 수동 2,827건(30.6%), 반자동 261건(2.8%)입니다. 인터넷 구매 1등은 구분이 공개되지 않아 넣지 않았습니다(동행복권 당첨 판매점 기록, 2026-11-21 추첨 기준)</p>
+<p class="mb-4 leading-relaxed">이 숫자는 &#39;당첨 게임 중 몇 %가 자동이었나&#39;일 뿐 &#39;자동으로 사면 몇 %가 당첨되나&#39;가 아닙니다. 인터넷 구매분은 판매점 목록에서 빠지므로, 판매점 화면만 세면 공식 전체 건수와 다를 수 있다는 점도 함께 기억해 두세요.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">내가 고른 번호에 의미를 두면 무엇이 달라지나요?</h2>
+<p class="mb-4 leading-relaxed">확률은 달라지지 않습니다. 생일이나 기념일을 고르는 것은 개인적인 선택이고, 특정한 한 조합이 1등일 확률은 선택 이유와 관계없이 1/8,145,060입니다. 다만 고르는 범위가 좁아지는 효과는 있습니다.</p>
+<p class="mb-4 leading-relaxed">예를 들어 날짜로 쓸 수 있는 1~31만으로 6개를 고르면 가능한 조합은 736,281개로 전체의 약 9.0%입니다. 범위가 좁아져도 각 조합의 확률은 같습니다. 1~3등 당첨금은 같은 등수 당첨자 수로 나누어 지급되므로(동행복권 안내), 같은 번호를 고른 사람이 많은 회차라면 1인당 금액이 작아질 수는 있습니다.</p>
+<p class="mb-4 leading-relaxed">같은 번호를 여러 게임에 반복하면 서로 다른 조합을 추가로 확보한 것과도 다릅니다. 과거 당첨자의 선택 방법을 따라 구매량을 늘릴 근거로 삼을 필요도 없습니다.</p>
+<h2 class="text-xl font-bold mt-8 mb-3">이 글의 근거는 어디서 확인하나요?</h2>
+<p class="mb-4 leading-relaxed">선택 방식의 정의와 당첨금 배분 방식은 동행복권 공식 안내에서, 확률 계산은 마이로또맵의 확률 가이드에서 확인할 수 있습니다. 판매점 기록에서 분모가 왜 중요한지는 명당 배출 횟수 가이드에서 이어서 설명합니다.</p>
+<ul class="list-disc list-inside space-y-1 mb-4"><li><a href="https://www.dhlottery.co.kr/lt645/intro" class="content-link" rel="noopener" target="_blank">동행복권 로또6/45 소개</a>: 번호 선택 방식, 당첨금 배분, 2026-11-25 확인.</li><li><a href="/guides/lotto-odds/" class="content-link">당첨 확률의 계산</a>: 전체 조합 수와 등수별 확률.</li><li><a href="/guides/shop-win-count/" class="content-link">명당 배출 횟수 해석</a>: 판매점 기록에서도 필요한 분모와 집계 기간.</li></ul>
+<h2 class="text-xl font-bold mt-8 mb-3">자주 묻는 질문</h2>
+<h3 class="text-lg font-bold mt-6 mb-2">자동으로 사면 수동보다 당첨 확률이 높나요?</h3>
+<p class="mb-4 leading-relaxed">아닙니다. 공정한 추첨에서 한 조합의 1등 확률은 선택 방식과 관계없이 8,145,060분의 1입니다. 자동 당첨이 많아 보이는 것은 자동으로 팔린 게임이 많기 때문일 수 있습니다.</p>
+<h3 class="text-lg font-bold mt-6 mb-2">반자동은 무엇인가요?</h3>
+<p class="mb-4 leading-relaxed">원하는 번호를 1개 이상 6개 미만으로 직접 고르고, 나머지 번호를 자동으로 채우는 방식입니다. 동행복권 로또6/45 안내에 정의되어 있습니다.</p>
+<h3 class="text-lg font-bold mt-6 mb-2">자동·수동별 당첨률을 계산하려면 무엇이 필요한가요?</h3>
+<p class="mb-4 leading-relaxed">각 방식으로 판매된 전체 게임 수가 필요합니다. 공식 결과의 선택 방식별 당첨 건수만으로는 판매 비중을 알 수 없어 당첨률을 계산할 수 없습니다.</p>
+      </div>
+      <nav class="card mt-6" aria-label="지역별 1등 배출 판매점"><h2 class="section-title mb-3"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15m6-12v15"/></svg> 지역별 1등 배출 판매점</h2><ul class="region-link-list"><li><a class="filter-chip" href="/shops/">전국 판매점</a></li><li><a class="filter-chip" href="/shops/%EA%B2%BD%EA%B8%B0/">경기 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%84%9C%EC%9A%B8/">서울 판매점</a></li><li><a class="filter-chip" href="/shops/%EB%B6%80%EC%82%B0/">부산 판매점</a></li><li><a class="filter-chip" href="/shops/%EA%B2%BD%EB%82%A8/">경남 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%9D%B8%EC%B2%9C/">인천 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC/">전남광주 판매점</a></li><li><a class="filter-chip" href="/shops/%EB%8C%80%EA%B5%AC/">대구 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%B6%A9%EB%82%A8/">충남 판매점</a></li><li><a class="filter-chip" href="/shops/%EA%B2%BD%EB%B6%81/">경북 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%B6%A9%EB%B6%81/">충북 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%A0%84%EB%B6%81/">전북 판매점</a></li><li><a class="filter-chip" href="/shops/%EA%B0%95%EC%9B%90/">강원 판매점</a></li><li><a class="filter-chip" href="/shops/%EB%8C%80%EC%A0%84/">대전 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%9A%B8%EC%82%B0/">울산 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%A0%9C%EC%A3%BC/">제주 판매점</a></li><li><a class="filter-chip" href="/shops/%EC%84%B8%EC%A2%85/">세종 판매점</a></li></ul></nav>
+    </article>
+  
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong><span class="brand-wordmark"><svg class="brand-mark" viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1C7.72 1 1 7.66 1 15.88c0 9.47 11.7 19.8 13.8 21.58a1.85 1.85 0 0 0 2.4 0C19.3 35.68 31 25.35 31 15.88 31 7.66 24.28 1 16 1Z"/><circle cx="16" cy="15.5" r="10" fill="#fff"/><path d="M19.2 10.3c-1.1-.95-2.7-1.08-4.1-.36-2.3 1.2-3.1 3.5-3.1 6.25 0 3.1 1.55 5.11 4.15 5.11a3.65 3.65 0 1 0-.03-7.3c-1.87 0-3.32 1.12-4.04 2.53" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-word">마이로또<span class="brand-accent">맵</span></span></span></strong> <span class="footer-brand-en">(My Lotto Map)</span>
+        </div>
+        <p class="footer-desc">전국 로또 명당, 당첨 결과와 내 번호를 한곳에서</p>
+        <nav class="footer-links" aria-label="서비스 안내">
+          <a href="/about/">서비스 소개</a>
+          <a href="/data-methodology/">데이터·통계 설명</a>
+          <a href="/guides/">가이드</a>
+          <a href="/privacy/">개인정보처리방침</a>
+          <a href="/terms/">이용약관</a>
+          <a href="/contact/">문의</a>
+        </nav>
+        <div class="footer-hubs"><nav aria-label="시도별 명당"><strong>시도별 명당</strong><a href="/shops/%EA%B2%BD%EA%B8%B0/">경기</a><a href="/shops/%EC%84%9C%EC%9A%B8/">서울</a><a href="/shops/%EB%B6%80%EC%82%B0/">부산</a><a href="/shops/%EA%B2%BD%EB%82%A8/">경남</a><a href="/shops/%EC%9D%B8%EC%B2%9C/">인천</a><a href="/shops/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC/">전남광주</a><a href="/shops/%EB%8C%80%EA%B5%AC/">대구</a><a href="/shops/%EC%B6%A9%EB%82%A8/">충남</a><a href="/shops/%EA%B2%BD%EB%B6%81/">경북</a><a href="/shops/%EC%B6%A9%EB%B6%81/">충북</a><a href="/shops/%EC%A0%84%EB%B6%81/">전북</a><a href="/shops/%EA%B0%95%EC%9B%90/">강원</a><a href="/shops/%EB%8C%80%EC%A0%84/">대전</a><a href="/shops/%EC%9A%B8%EC%82%B0/">울산</a><a href="/shops/%EC%A0%9C%EC%A3%BC/">제주</a><a href="/shops/%EC%84%B8%EC%A2%85/">세종</a></nav><nav aria-label="인기 가이드"><strong>인기 가이드</strong><a href="/guides/lotto-odds/">로또 당첨 확률과 번호 조합의 관계: 1등~5등 확률 계산</a><a href="/guides/prize-claim-and-tax/">로또 당첨금 수령과 세금, 확인할 순서</a><a href="/guides/check-my-numbers/">내 번호 당첨 확인 방법: 등수 판정 기준과 결과 대기 읽기</a><a href="/guides/auto-manual-selection/">자동·반자동·수동, 당첨 건수는 어떻게 읽을까?</a><a href="/guides/number-generator-guide/">마이로또맵 번호 생성·저장 사용법: 무작위 생성과 조건 설정</a></nav></div>
+        <p class="footer-notice">본 서비스는 동행복권 공식 데이터를 기반으로 제공하며, 특정 번호의 당첨을 보장하지 않습니다.</p>
+        <p class="footer-copy">&copy; 2026 마이로또맵. 모든 권리 보유.</p>
+      </div>
+    </footer>
+  
+  
+</body>
+</html>
